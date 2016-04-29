@@ -2,4 +2,4 @@
 
 application just for practice
 
-[https://travis-ci.org/ta-ito/terakoya.svg?branch=master](https://travis-ci.org/ta-ito/terakoya)
+[![Build Status](https://travis-ci.org/ta-ito/terakoya.svg?branch=master)](https://travis-ci.org/ta-ito/terakoya)
