@@ -1,2 +1,3 @@
-# terakoya
-practice
+# Terakoya
+
+application just for practice
