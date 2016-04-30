@@ -5,6 +5,50 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    link[href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css']
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
 
-  body
-    = yield
+  body[style="text-align: center;"]
+    header[style="height: 45px; background-color: #ccc;"]
+      .header_left[style="float: left; margin-top: 0px; margin-left: 5px; font-family: 'Open Sans';"]
+         = link_to "Terakoya", root_path, style: "color: white; font-size: 28px;"
+      .header_right[style="float: right; margin-right: 5px; margin-top: 5px"]
+        - if user_signed_in?
+          span[style="margin-right: 5px;"] = current_user.email.split("@").first
+          span = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
+        - elsif params[:controller] != "devise/sessions"
+          span = link_to 'Login', new_user_session_path, class: 'btn btn-warning'
+    .clearfix[style="clear: both;"]
+
+    .container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
+      - if notice.present?
+        - (notices = Array(notice)).each do |n|
+          .alert.alert-success.fade.in
+            = "INFO: #{n}"
+            button[type="button" class="close fade in" data-dismiss="alert" aria-label="Close"]
+              span[aria-hidden="true"]&times;
+
+      - if alert.present?
+        - (alerts = Array(alert)).each do |a|
+          .alert.alert-warning.fade.in
+            = "WARNING: #{a}"
+            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+              span[aria-hidden="true"]&times;
+
+      - if (error = flash[:error]).present?
+        - (errors = Array(error)).each do |e|
+          .alert.alert-danger.fade.in
+            = "ERROR: #{e}"
+            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+              span[aria-hidden="true"]&times;
+
+      .contents
+        = yield
+
+      footer
+        p Footer
+        = link_to "helllo", root_path(notice: :hello)
+
+      aside
+        p Sidemenu
+
