@@ -5,6 +5,31 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
 
   body
-    = yield
+    .container
+      header
+        div Terakoya
+
+      - if notice.present?
+        .alert.alert-success
+          = notice
+          button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+            span[aria-hidden="true"]&times;
+      - if alert.present?
+        .alert.alert-warning
+          = alert
+          button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+            span[aria-hidden="true"]&times;
+
+      .contents
+        = yield
+
+      footer
+        p Footer
+        = link_to "helllo", root_path(notice: :hello)
+
+      aside
+        p Sidemenu
+
