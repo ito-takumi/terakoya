@@ -1,9 +1,9 @@
 # Terakoya
 
-application just for practice
-
 [![Build Status](https://travis-ci.org/ta-ito/terakoya.svg?branch=master)](https://travis-ci.org/ta-ito/terakoya)
+[![Code Climate](https://codeclimate.com/github/ta-ito/terakoya/badges/gpa.svg)](https://codeclimate.com/github/ta-ito/terakoya)
 
+Application just for practice
 
 ## Installation
 
@@ -13,7 +13,7 @@ Download a package.
 git clone git@github.com:ta-ito/terakoya.git
 ```
 
-Then, you could start Terakoya as usual;
+Then, you can start Terakoya as usual;
 
 ```console
 cd terakoya
@@ -30,9 +30,9 @@ That's it!
 
 ## Requirements
 
-Terakoya is tested under the following versions.
+Tested under the following versions.
 
-* Ruby 2.3
-* Ruby 2.2
+* Ruby 2.3.1
+* Ruby 2.2.5
 
 Terakoya may run in other versions, but not guaranteed.
