@@ -37,7 +37,6 @@ group :development do
   gem 'spring'
 
   ## terakoya
-  gem 'simplecov'
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'annotate'
@@ -49,7 +48,9 @@ group :development, :test do
 
   ## terakoya
   gem 'sqlite3'
+  gem 'simplecov'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do
