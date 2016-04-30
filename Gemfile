@@ -39,6 +39,7 @@ group :development do
   ## terakoya
   gem 'simplecov'
   gem 'guard-rails'
+  gem 'guard-rspec'
   gem 'annotate'
 end
 
