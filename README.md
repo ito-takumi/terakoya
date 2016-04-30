@@ -9,17 +9,21 @@ application just for practice
 
 Download a package.
 
-    $ git clone git@github.com:ta-ito/terakoya.git
+```console
+git clone git@github.com:ta-ito/terakoya.git
+```
 
 Then, you could start Terakoya as usual;
 
-    $ cd terakoya
-    $ rails s
+```console
+cd terakoya
+rails s
 
-    #=> Booting WEBrick
-    #=> Rails 4.2.6 application starting in development on http://localhost:3000
-    #=> Run `rails server -h` for more startup options
-    #=> Ctrl-C to shutdown server
+#=> Booting WEBrick
+#=> Rails 4.2.6 application starting in development on http://localhost:3000
+#=> Run `rails server -h` for more startup options
+#=> Ctrl-C to shutdown server
+```
 
 That's it!
 
