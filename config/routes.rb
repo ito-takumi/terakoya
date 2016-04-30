@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users,
+    path: :user,
+    path_names: {
+      sign_in: :login,
+      sign_out: :logout,
+      confirmation: :verification,
+    }
+
   root to: 'top#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
