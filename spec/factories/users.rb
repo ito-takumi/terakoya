@@ -34,55 +34,15 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-    :registerable,
-    :recoverable,
-    :rememberable,
-    :trackable,
-    :validatable
-
-  before_validation :set_urlsafe_name
-
-  #config.email_regexp = /\A[^@]+@[^@]+\z/
-  #config.password_length = 10..32
-
-  validates :name,
-    presence: true,
-    length: {
-      minimum: 6,
-      maximum: 20,
-      allow_blank: true,
-    },
-    format: {
-      with: /\A[A-Za-z]+[0-9A-Za-z:@\.\+\*\/\\_-]*[0-9A-Za-z]+\z/,
-      allow_blank: true,
-    },
-    uniqueness: {
-      case_sensitive: false,
-    }
-  validates :urlsafe_name,
-    presence: true,
-    length: {
-      minimum: 5,
-      maximum: 20,
-      allow_blank: true,
-    },
-    format: {
-      with: /\A[a-z]+[0-9A-Za-z\._-]*[0-9a-z]+\z/,
-      allow_blank: true,
-    },
-    uniqueness: true
-
-  def self.urlsafe_name(name)
-    name.gsub(/[:@\+\*\/\\]/, "").downcase
-  end
-
-  private
-
-  def set_urlsafe_name
-    self.urlsafe_name = User.urlsafe_name(self.name)
+FactoryGirl.define do
+  factory :user do
+    sequence(:name) do |n|
+      "my_name-#{n}"
+    end
+    sequence(:email) do |n|
+      "terakoya-#{n}@example.com"
+    end
+    password              "MyPassword"
+    password_confirmation "MyPassword"
   end
 end
