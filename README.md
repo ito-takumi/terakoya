@@ -1,7 +1,4 @@
-# Terakoya
-
-[![Build Status](https://travis-ci.org/ta-ito/terakoya.svg?branch=master)](https://travis-ci.org/ta-ito/terakoya)
-[![Code Climate](https://codeclimate.com/github/ta-ito/terakoya/badges/gpa.svg)](https://codeclimate.com/github/ta-ito/terakoya)
+# Terakoya [![Build Status](https://travis-ci.org/ta-ito/terakoya.svg?branch=master)](https://travis-ci.org/ta-ito/terakoya) [![Test Coverage](https://codeclimate.com/github/ta-ito/terakoya/badges/coverage.svg)](https://codeclimate.com/github/ta-ito/terakoya/coverage) [![Code Climate](https://codeclimate.com/github/ta-ito/terakoya/badges/gpa.svg)](https://codeclimate.com/github/ta-ito/terakoya) 
 
 Application just for practice
 
