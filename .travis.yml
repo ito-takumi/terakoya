@@ -8,3 +8,4 @@ rvm:
 matrix:
   allow_failures:
     - rvm: 2.1.9
+cache: bundler
