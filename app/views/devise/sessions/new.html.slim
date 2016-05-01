@@ -2,12 +2,12 @@ h2 Login
 
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
-    = f.label :email, t('email'), style: 'width: 100px;'
-    = f.email_field :email, autofocus: true
+    = f.label :email, t('email'), style: 'min-width: 100px; width: 20%; max-width: 120px; margin-bottom: 0px; margin-top: 10px;'
+    = f.email_field :email, autofocus: true, style: 'min-width: 200px; width: 35%; max-width: 300px;'
 
   .field
-    = f.label :password, t('password'), style: 'width: 100px;'
-    = f.password_field :password, autocomplete: "off"
+    = f.label :password, t('password'), style: 'min-width: 100px; width: 20%; max-width: 120px; margin-bottom: 0px; margin-top: 10px;'
+    = f.password_field :password, autocomplete: "off", style: 'min-width: 200px; width: 35%; max-width: 300px;'
 
   - if devise_mapping.rememberable?
     .field
