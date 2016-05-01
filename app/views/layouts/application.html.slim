@@ -8,17 +8,19 @@ html
     link[href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css']
     meta[name="viewport" content="width=device-width, initial-scale=1"]
 
-  body[style="text-align: center;"]
-    header[style="height: 45px; background-color: #ccc;"]
-      .header_left[style="float: left; margin-top: 0px; margin-left: 5px; font-family: 'Open Sans';"]
-         = link_to "Terakoya", root_path, style: "color: white; font-size: 28px;"
-      .header_right[style="float: right; margin-right: 5px; margin-top: 5px"]
+  body[id="terakoya"]
+    header.clearfix
+      .header_left
+         = link_to "Terakoya", root_path, style: "color: #eef; font-size: 28px;"
+      .header_right
+        i = I18n.locale
         - if user_signed_in?
           span[style="margin-right: 5px;"] = current_user.email.split("@").first
           span = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
-        - elsif params[:controller] != "devise/sessions"
-          span = link_to 'Login', new_user_session_path, class: 'btn btn-warning'
-    .clearfix[style="clear: both;"]
+        - if params[:controller] != "devise/sessions"
+          span = link_to 'Login', new_user_session_path, class: 'btn btn-sm'
+        - if params[:controller] != "devise/registrations"
+          span = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning', style: "      box-shadow: 1px -1px 3px 6px #bbb;"
 
     .container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
       - if notice.present?
@@ -47,7 +49,7 @@ html
 
       footer
         p Footer
-        = link_to "helllo", root_path(notice: :hello)
+        = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)
 
       aside
         p Sidemenu
