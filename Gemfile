@@ -48,7 +48,11 @@ group :development, :test do
 
   ## terakoya
   gem 'sqlite3'
-  gem 'simplecov'
+end
+
+group :test do
+  ## terakoya
+  gem "codeclimate-test-reporter", require: nil
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end

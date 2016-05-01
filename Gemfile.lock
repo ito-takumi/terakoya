@@ -45,6 +45,8 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.5)
+    codeclimate-test-reporter (0.5.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -264,6 +266,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   byebug
+  codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   dalli
   devise
@@ -278,7 +281,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simplecov
   slim-rails
   spring
   sqlite3
