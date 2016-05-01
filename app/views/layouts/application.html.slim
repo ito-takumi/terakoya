@@ -13,6 +13,7 @@ html
       .header_left
          = link_to "Terakoya", root_path, style: "color: #eef; font-size: 28px;"
       .header_right
+        i = I18n.locale
         - if user_signed_in?
           span[style="margin-right: 5px;"] = current_user.email.split("@").first
           span = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
@@ -48,7 +49,7 @@ html
 
       footer
         p Footer
-        = link_to "helllo", root_path(notice: :hello)
+        = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)
 
       aside
         p Sidemenu

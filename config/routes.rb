@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope ":locale" do
+  scope "(:locale)", locale: /en|ja/ do
     devise_for :users,
       path: :user,
       path_names: {
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root to: 'top#show'
   end
 
-  get "/", controller: :top, action: :redirect
+  # get "/", controller: :top, action: :redirect
 
 
   # The priority is based upon order of creation: first created -> highest priority.
