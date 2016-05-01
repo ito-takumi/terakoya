@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430051803) do
+ActiveRecord::Schema.define(version: 20160430164547) do
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.string   "word",                          null: false
+    t.string   "urlsafe_word",                  null: false
+    t.string   "short_explanation",             null: false
+    t.text     "explanation"
+    t.integer  "view_count",        default: 0, null: false
+    t.datetime "last_view_at"
+    t.integer  "lock_version",      default: 0, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "dictionaries", ["urlsafe_word"], name: "index_dictionaries_on_urlsafe_word", unique: true
+  add_index "dictionaries", ["word"], name: "index_dictionaries_on_word", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
