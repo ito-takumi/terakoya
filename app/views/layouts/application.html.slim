@@ -13,14 +13,15 @@ html
       .header_left
          = link_to "Terakoya", root_path, style: "color: #eef; font-size: 28px;"
       .header_right
-        i = I18n.locale
+        span[style="margin-right: 10px;"] = t 'language'
         - if user_signed_in?
-          span[style="margin-right: 5px;"] = current_user.email.split("@").first
-          span = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
+          span = current_user.email.split("@").first
+          = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
         - if params[:controller] != "devise/sessions"
-          span = link_to 'Login', new_user_session_path, class: 'btn btn-sm'
+          = link_to 'Login', new_user_session_path, class: 'btn'
         - if params[:controller] != "devise/registrations"
-          span = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning', style: "      box-shadow: 1px -1px 3px 6px #bbb;"
+          = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning',
+            style: "box-shadow: 1px -1px 3px 6px #bbb;"
 
     .container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
       - if notice.present?
