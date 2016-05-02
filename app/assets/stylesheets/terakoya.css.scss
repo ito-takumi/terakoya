@@ -2,25 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "terakoya/clearfix";
+@import "terakoya/form";
+
 #terakoya {
-  .clearfix:before,
-  .clearfix:after {
-    content: " ";
-    display: table;
-  }
-
-  .clearfix:after {
-    clear: both;
-  }
-
-  .clearfix {
-    *zoom: 1;
-  }
-
   body {
     text-align: center;
   }
-
 
   header {
     height: 45px;
