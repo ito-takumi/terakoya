@@ -9,25 +9,47 @@
   body {
     text-align: center;
   }
-
   header {
-    height: 45px;
-    background-color: #ccc;
-    box-shadow: 0px 0px 12px 6px #ccc;
+    $header_bg_color--default: #ccc;
+    $header_left_bg_color--default: #ddd;
 
+    height: 45px;
+    background-color: $header_bg_color--default;
+    box-shadow: 0px 0px 12px 6px $header_bg_color--default;
     .header_left {
-      background-color: #ddd;
-      box-shadow: 0px 0px 12px 6px #ddd;
+      background-color: $header_left_bg_color--default;
+      box-shadow: 0px 0px 12px 6px $header_left_bg_color--default;
       float: left;
       padding: 0px 5px 0 5px;
       font-family: 'Open Sans';
       text-shadow: -1px -1px 6px #333;
     }
-
     .header_right {
       float: right;
       margin-right: 5px;
       margin-top: 5px
+    }
+    &.--login {
+      $header_bg_color--login: #9cf;
+      $header_left_bg_color--login: #adf;
+
+      background-color: $header_bg_color--login;
+      box-shadow-color: $header_bg_color--login;
+      .header_left {
+        background-color: $header_left_bg_color--login;
+        box-shadow-color: $header_left_bg_color--login;
+      }
+    }
+    &.--master {
+      $header_bg_color-master: #f66;
+      $header_left_bg_color--master: #f77;
+
+      background-color: $header_bg_color-master;
+      box-shadow-color: $header_bg_color-master;
+      .header_left {
+        background-color: $header_left_bg_color--master;
+        box-shadow-color: $header_left_bg_color--master;
+      }
     }
   }
 }
