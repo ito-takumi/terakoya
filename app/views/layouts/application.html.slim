@@ -23,27 +23,9 @@ html
           = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning',
             style: "box-shadow: 1px -1px 3px 6px #bbb;"
 
-    .container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
-      - if notice.present?
-        - (notices = Array(notice)).each do |n|
-          .alert.alert-success.fade.in
-            = "INFO: #{n}"
-            button[type="button" class="close fade in" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
-
-      - if alert.present?
-        - (alerts = Array(alert)).each do |a|
-          .alert.alert-warning.fade.in
-            = "WARNING: #{a}"
-            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
-
-      - if (error = flash[:error]).present?
-        - (errors = Array(error)).each do |e|
-          .alert.alert-danger.fade.in
-            = "ERROR: #{e}"
-            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
+    .container-fluid[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
+      .flash
+        = render partial: '/layouts/flash'
 
       .contents
         = yield

@@ -1,0 +1,18 @@
+table
+  thead
+    tr
+      th ID
+      th Word
+      th Short Explanation
+      th Long Explanation
+      th View Count
+      th Last Vieweed Time
+  tbody
+    - @dictionaries.each do |dictionary|
+      tr[id="dictionary--#{dictionary.id}"]
+        td = dictionary.id
+        td = dictionary.word
+        td = dictionary.short_explanation
+        td = dictionary.explanation
+        td = dictionary.view_count
+        td = dictionary.last_view_at

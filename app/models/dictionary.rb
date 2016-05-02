@@ -20,4 +20,15 @@
 #
 
 class Dictionary < ActiveRecord::Base
+  before_validation :set_urlsafe_word
+
+  def self.urlsafe_word(word)
+    word.gsub(/[:@\+\*\/\\]/, "").downcase
+  end
+
+  private
+
+  def set_urlsafe_word
+    self.urlsafe_word = Dictionary.urlsafe_word(self.word)
+  end
 end

@@ -1,0 +1,20 @@
+- if flash[:notice].present?
+  - (messages = Array(flash[:notice])).each do |message|
+    .alert.alert-success.fade.in
+      = "INFO: #{message}"
+      button[type="button" class="close fade in" data-dismiss="alert" aria-label="Close"]
+        span[aria-hidden="true"]&times;
+
+- if flash[:alert].present?
+  - (messages = Array(flash[:alert])).each do |message|
+    .alert.alert-warning.fade.in
+      = "WARNING: #{message}"
+      button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+        span[aria-hidden="true"]&times;
+
+- if flash[:error].present?
+  - (messages = Array(flash[:error])).each do |message|
+    .alert.alert-danger.fade.in
+      = "ERROR: #{message}"
+      button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
+        span[aria-hidden="true"]&times;

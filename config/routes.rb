@@ -8,6 +8,8 @@ Rails.application.routes.draw do
         confirmation: :verification,
       }
 
+      resources :dictionaries
+
     root to: 'top#show'
   end
 

@@ -1,0 +1,17 @@
+h2 Dictionary#index
+
+- if @dictionaries.size > 0
+  .table
+    = render partial: 'dictionaries'
+- else
+  p No dictionaries found.
+
+.panel.panel-info[style="margin: 50px 0 20px 20px;"]
+  .panel-heading
+    h3.panel-title
+      b[style="color: yellow"] +
+      |  add
+      b  New Word
+      |  to dictionary
+  .panel-body
+    = render partial: 'form'
