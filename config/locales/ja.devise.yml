@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-en:
+ja:
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -43,8 +43,8 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
-      signed_in: "Signed in"
-      signed_out: "Signed out"
+      signed_in: "Login"
+      signed_out: "Logout"
       already_signed_out: "Already signed out"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
