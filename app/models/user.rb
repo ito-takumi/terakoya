@@ -42,7 +42,34 @@ class User < ActiveRecord::Base
     :recoverable,
     :rememberable,
     :trackable,
-    :validatable
+    :validatable,
+    authentication_keys: [:login_id]
+
+  attr_accessor :login_id
+
+  def self.urlsafe_name(name)
+    name.gsub(/[:@\+\*\/\\]/, "").downcase
+  end
+
+  # allow login by email or user's name
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login_id = conditions.delete(:login_id)
+      where(conditions).
+        where("name = :value OR lower(email) = lower(:value)", {value: login_id}).
+        first
+    else
+      where(conditions).
+        first
+    end
+  end
+
+  private
+
+  def set_urlsafe_name
+    self.urlsafe_name = User.urlsafe_name(self.name)
+  end
+
 
   before_validation :set_urlsafe_name
 
@@ -61,12 +88,12 @@ class User < ActiveRecord::Base
       allow_blank: true,
     },
     uniqueness: {
-      case_sensitive: false,
+      case_sensitive: true,
+      allow_blank: true,
     }
   validates :urlsafe_name,
     presence: true,
     length: {
-      minimum: 5,
       maximum: 20,
       allow_blank: true,
     },
@@ -74,15 +101,7 @@ class User < ActiveRecord::Base
       with: /\A[a-z]+[0-9A-Za-z\._-]*[0-9a-z]+\z/,
       allow_blank: true,
     },
-    uniqueness: true
-
-  def self.urlsafe_name(name)
-    name.gsub(/[:@\+\*\/\\]/, "").downcase
-  end
-
-  private
-
-  def set_urlsafe_name
-    self.urlsafe_name = User.urlsafe_name(self.name)
-  end
+    uniqueness: {
+      allow_blank: true,
+    }
 end

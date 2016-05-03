@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Terakoya
+    title = @application_head_title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -9,31 +9,30 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
 
   body[id="terakoya"]
-    header.clearfix
+    header.clearfix[class=(user_signed_in? ? "--login" : "--visitor")]
       .header_left
-         = link_to "Terakoya", root_path, style: "color: #eef; font-size: 28px;"
+         = link_to @application_title, root_path, style: "color: #eef; font-size: 28px;"
       .header_right
         span[style="margin-right: 10px;"] = t 'language'
         - if user_signed_in?
-          span = current_user.email.split("@").first
+          span[style="margin-right: 10px;"] = current_user.email.split("@").first
           = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
-        - if params[:controller] != "devise/sessions"
+        - if (not user_signed_in?) and (params[:controller] != "user/sessions")
           = link_to 'Login', new_user_session_path, class: 'btn'
-        - if params[:controller] != "devise/registrations"
+        - if (not user_signed_in?) and (params[:controller] != "user/registrations")
           = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning',
             style: "box-shadow: 1px -1px 3px 6px #bbb;"
 
-    .container-fluid[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
-      .flash
-        = render partial: '/layouts/flash'
+    .contents.container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
+      .alerts
+        = render partial: '/layouts/alerts'
 
-      .contents
+      .main
         = yield
-
-      footer
-        p Footer
-        = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)
 
       aside
         p Sidemenu
 
+    footer.clearfix
+      p Footer
+      = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)

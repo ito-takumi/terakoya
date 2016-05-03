@@ -1,0 +1,84 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#terakoya {
+  form {
+    label {
+      border-left: solid 4px #22F;
+      color: #888;
+      margin-bottom: 0px;
+      margin-top: 10px;
+      padding-left: 5px;
+      vertical-align: text-text-top;
+      @media only screen and (max-width:599px) {
+        width: 100%;
+      }
+      @media only screen and (min-width:600px) and (max-width:899px) {
+        max-width: 225px;
+        min-width: 150px;
+        width: 25%;
+      }
+      @media only screen and (min-width:900px) {
+        max-width: 300px;
+        min-width: 200px;
+        width: 20%;
+      }
+    }
+    input[type='text'], input[type='email'], input[type='password'] {
+      vertical-align: text-top;
+      @media only screen and (max-width:599px){
+        width: 100%;
+      }
+      @media only screen and (min-width:600px) and (max-width:899px) {
+        max-width: 450px;
+        min-width: 300px;
+        width: 50%;
+      }
+      @media only screen and (min-width:900px) {
+        max-width: 600px;
+        width: 50%;
+      }
+    }
+    textarea {
+      vertical-align: text-top;
+      @media only screen and (max-width:599px){
+        width: 100%;
+      }
+      @media only screen and (min-width:600px) and (max-width:899px) {
+        width: 100%;
+      }
+      @media only screen and (min-width:900px) {
+        width: 75%;
+      }
+    }
+
+    .actions {
+      margin-top: 20px;
+      .actions_left {
+        text-align: left;
+      }
+      .actions_right {
+        text-align: right;
+      }
+    }
+
+
+
+    // .required {
+    //   color: #e22;
+    // }
+    // .optional {
+    //   color: #88e;
+    // }
+    // .required:before,
+    // .optional:before {
+    //   content: " (";
+    // }
+    .required:after {
+    //   color: #e22;
+      content: " (*) ";
+      color: #e22;
+    }
+  }
+}

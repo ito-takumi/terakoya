@@ -3,21 +3,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :check_params
+  before_action :set_application_title
   before_action :set_locale
 
-private
-  def check_params
-    [:notice, :alert, :error].each do |type|
-      flash.now[type] = params[type]
+  include Common::DeviseSessionUtil
+  include Common::I18nUtil
+
+  protected
+
+  def set_application_title
+    @application_head_title = @application_title = "Terakoya"
+    unless Rails.env.production?
+      @application_head_title = "[DEV] #{@application_head_title}"
     end
-  end
-
-  def set_locale
-    I18n.locale = session[:locale] = locale
-  end
-
-  def locale
-    params[:locale] || session[:locale] || I18n.default_locale
   end
 end

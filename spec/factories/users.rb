@@ -37,12 +37,12 @@
 FactoryGirl.define do
   factory :user do
     sequence(:name) do |n|
-      "my_name-#{n}"
+      "name-#{n}"
     end
     sequence(:email) do |n|
-      "terakoya-#{n}@example.com"
+      "email-#{n}@example.com"
     end
-    password              "MyPassword"
-    password_confirmation "MyPassword"
+    password              "Password"
+    password_confirmation "Password"
   end
 end
