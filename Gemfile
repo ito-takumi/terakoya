@@ -55,6 +55,7 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :production do
