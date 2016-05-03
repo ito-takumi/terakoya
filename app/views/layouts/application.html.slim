@@ -8,7 +8,7 @@ html
     link[href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css']
     meta[name="viewport" content="width=device-width, initial-scale=1"]
 
-  body[id="terakoya"]
+  body[class="terakoya"]
     header.clearfix[class=(user_signed_in? ? "--login" : "--visitor")]
       .header_left
          = link_to @application_title, root_path, style: "color: #eef; font-size: 28px;"
