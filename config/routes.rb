@@ -8,8 +8,8 @@ Rails.application.routes.draw do
         confirmation: :verification,
       },
       controllers: {
-        registrations: 'users/registrations',
-        sessions:      'users/sessions'
+        registrations: 'user/registrations',
+        sessions:      'user/sessions'
       }
 
     root to: 'top#show'

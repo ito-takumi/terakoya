@@ -2,10 +2,10 @@ h2 Login
 
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
-    = f.label :login_id, t('login_id')
+    = f.label :login_id, "Name or #{t('email')}", class: 'required'
     = f.text_field :login_id, autofocus: true
   .field
-    = f.label :password, t('password')
+    = f.label :password, t('password'), class: 'required'
     = f.password_field :password, autocomplete: "off"
 
   br
@@ -18,6 +18,4 @@ h2 Login
     .actions_left
       = link_to "Back", :back
     .actions_right
-      = f.submit "Log in", class: 'btn'
-
-/= render "devise/shared/links"
+      = f.submit "Login", disable_with: 'Sending...',  class: 'btn'

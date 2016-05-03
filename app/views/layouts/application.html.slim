@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Terakoya
+    title = @application_head_title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -11,47 +11,28 @@ html
   body[id="terakoya"]
     header.clearfix[class=(user_signed_in? ? "--login" : "--visitor")]
       .header_left
-         = link_to "Terakoya", root_path, style: "color: #eef; font-size: 28px;"
+         = link_to @application_title, root_path, style: "color: #eef; font-size: 28px;"
       .header_right
         span[style="margin-right: 10px;"] = t 'language'
         - if user_signed_in?
           span[style="margin-right: 10px;"] = current_user.email.split("@").first
           = link_to 'Logout', destroy_user_session_path, data: {confirm: "Logout?"}, method: :delete
-        - if (not user_signed_in?) and (params[:controller] != "devise/sessions")
+        - if (not user_signed_in?) and (params[:controller] != "user/sessions")
           = link_to 'Login', new_user_session_path, class: 'btn'
-        - if (not user_signed_in?) and (params[:controller] != "devise/registrations")
+        - if (not user_signed_in?) and (params[:controller] != "user/registrations")
           = link_to 'Sign up', new_user_registration_path, class: 'btn btn-warning',
             style: "box-shadow: 1px -1px 3px 6px #bbb;"
 
-    .container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
-      - if notice.present?
-        - (notices = Array(notice)).each do |n|
-          .alert.alert-success.fade.in
-            = "INFO: #{n}"
-            button[type="button" class="close fade in" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
+    .contents.container[style="margin-top: 12px; text-align: left; max-width: 1200px;"]
+      .alerts
+        = render partial: '/layouts/alerts'
 
-      - if alert.present?
-        - (alerts = Array(alert)).each do |a|
-          .alert.alert-warning.fade.in
-            = "WARNING: #{a}"
-            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
-
-      - if (error = flash[:error]).present?
-        - (errors = Array(error)).each do |e|
-          .alert.alert-danger.fade.in
-            = "ERROR: #{e}"
-            button[type="button" class="close" data-dismiss="alert" aria-label="Close"]
-              span[aria-hidden="true"]&times;
-
-      .contents
+      .main
         = yield
-
-      footer
-        p Footer
-        = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)
 
       aside
         p Sidemenu
 
+    footer.clearfix
+      p Footer
+      = link_to "hello", root_path(notice: :hello, alert: :hello, error: :hello)
